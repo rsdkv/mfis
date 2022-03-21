@@ -1,31 +1,33 @@
-import math
-
-
 # шифрование
 def simple_encode(phrase, alphabet, key):
-    ans = ''
+    encrypted = ''
     for i in range(len(phrase)):
-        if alphabet.find(phrase[i]) != -1:  # поиск буквы, -1, если не найдена в алфавите
-            ans += key[alphabet.find(phrase[i])]  # добавление элементов по ключу
+        if alphabet.find(phrase[i]) != -1:  # поиск элемента, возвращает -1, если элемент не найден в алфавите
+            encrypted += key[alphabet.find(phrase[i])]  # добавление элементов по индексу ключа
         else:
-            ans += phrase[i]
-    return ans
+            encrypted += phrase[i]
+    return encrypted
 
 
 # дешифрование
 def simple_decode(phrase, alphabet, key):
-    ans = ''
+    decrypted = ''
     for i in range(len(phrase)):
         if key.find(phrase[i]) != -1:
-            ans += alphabet[key.find(phrase[i])]
+            decrypted += alphabet[key.find(phrase[i])]
         else:
-            ans += phrase[i]
-    return ans
+            decrypted += phrase[i]
+    return decrypted
 
 
+# проверка ключа для шифра простой замены
 def simple_key_check(key, alphabet):
     if (len(key) != len(alphabet)):
-        raise TypeError('Неправильная длина параметра (length)')
+        raise TypeError('Неправильная длина ключа ')
     for i in range(len(key)):
         if key.find(key[i]) != key.rfind(key[i]) or alphabet.find(key[i]) == -1:
-            raise TypeError('Invalid key (symbols)')
+            raise TypeError('Ошибка заданного алфавита ')
+
+
+
+
