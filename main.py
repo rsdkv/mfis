@@ -8,7 +8,7 @@ def main():
     print('Выберите шифр: ')
     print('1 - Шифр простой замены ')
     print('2 - Аффинный шифр ')
-    print('3 - Аффинный рекурентный шифр ')
+    print('3 - Аффинный рекуррентный шифр ')
 
     variant_cipher = int(input())
     if variant_cipher < 1 or variant_cipher > 3:

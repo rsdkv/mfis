@@ -6,7 +6,7 @@ def reverse_element(a, alphabet):
 
 
 # шифрование рекурентного аффинного шифра
-def recurent_afin_encode(phrase, alphabet, a1, a2, b1, b2):
+def recurent_afin_encode(phrase, a1, a2, b1, b2, alphabet):
     encrypted = ''
     for i in range(len(phrase)):
         if i == 0:
@@ -29,7 +29,7 @@ def recurent_afin_encode(phrase, alphabet, a1, a2, b1, b2):
 
 
 # дешифрование рекурентного аффинного шифра
-def recurent_afin_decode(phrase, alphabet, a1, a2, b1, b2):
+def recurent_afin_decode(phrase, a1, a2, b1, b2, alphabet):
     decrypted = ''
     for i in range(len(phrase)):
         if i == 0:
