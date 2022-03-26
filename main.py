@@ -1,7 +1,9 @@
 import math
 from simple import simple_encode, simple_decode, simple_key_check
 from afin_cipher import afin_encode, afin_decode
-from recurent_afin import recurent_afin_encode, recurent_afin_decode
+from recurent_afin import recurent_afin_encode, recurent_afin_decode, find_reverse
+
+
 
 def main():
     print('Программа принимает только нижний регистр! ')
@@ -35,12 +37,14 @@ def main():
     phrase = str(input())
 
     if variant_cipher == 1:
-        print('Введите ключ:')# пример для RUS: шщъыьэюяабвгдеёжзийклмнопрстуфхцч
+        print('Введите ключ:')  # пример для RUS: шщъыьэюяабвгдеёжзийклмнопрстуфхцч
         key = str(input())  # пример для ENG: yzabcdefghijklmnopqrstuvwx
         simple_key_check(key, alphabet)
         if (cipher_mode == 1):
+            print("Шифртекст: ")
             print(simple_encode(phrase, alphabet, key))
         else:
+            print("Шифртекст: ")
             print(simple_decode(phrase, alphabet, key))
 
     elif variant_cipher == 2:
@@ -50,18 +54,22 @@ def main():
             raise TypeError('Invalid key')
 
         if cipher_mode == 1:
+            print("Шифртекст: ")
             print(afin_encode(phrase, a, b, alphabet))
         else:
+            print("Шифртекст: ")
             print(afin_decode(phrase, a, b, alphabet))
     else:
         print('Введите ключ (a1, a2, b1, b2):')
         a1, a2, b1, b2 = map(int, input().split())
-        if math.gcd(a1, len(alphabet)) != 1 or math.gcd(a2, len(alphabet)) != 1:
+        if math.gcd(a1, len(alphabet)) != 1 or math.gcd(a2, len(alphabet)) != 1: #Наибольший общ.делитель
             raise TypeError('Неправильный ключ')
 
         if cipher_mode == 1:
+            print("Шифртекст: ")
             print(recurent_afin_encode(phrase, a1, a2, b1, b2, alphabet))
         else:
+            print("Шифртекст: ")
             print(recurent_afin_decode(phrase, a1, a2, b1, b2, alphabet))
 
 
