@@ -4,16 +4,16 @@ from vizhner_encode import vizh_encode, vizh_open_encode, vizh_cipher_encode
 
 def main():
     print('Выберите шифр:')
-    print('1 -- Шифр Виженера')
-    print('2 -- Шифр Виженера с самоключом по открытому тексту:')
-    print('3 -- Шифр Виженера с самоключом по шифртексту:')
+    print('0 -- Шифр Виженера')
+    print('1 -- Шифр Виженера с самоключом по открытому тексту:')
+    print('2 -- Шифр Виженера с самоключом по шифртексту:')
     cipher_type = int(input())
     if cipher_type < 0 or cipher_type > 2:
         raise TypeError('Неизвестный шифр')
 
     print('Выберите язык:')
-    print('1 -- РУС')
-    print('2 -- ENG')
+    print('0 -- РУС')
+    print('1 -- ENG')
     language = int(input())
     if language == 0:
         alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
@@ -30,7 +30,7 @@ def main():
     else:
         print('Вы выбрали стандартный алфавит')
 
-    print('Зашифрование/Расшифрование')
+    print('Зашифрование/Расшифрование -- 0/1')
     cipher_mode = int(input())
     if cipher_mode < 0 or cipher_mode > 1:
         raise TypeError('Неизвестный метод')
@@ -49,18 +49,24 @@ def main():
 
     if cipher_type == 0:
         if cipher_mode == 0:
+            print('Шифртекст: ')
             print(vizh_encode(phrase, alphabet, key))
         else:
+            print('Исходный текст: ')
             print(vizh_decode(phrase, alphabet, key))
     elif cipher_type == 1:
         if cipher_mode == 0:
+            print('Шифртекст: ')
             print(vizh_open_encode(phrase, alphabet, key))
         else:
+            print('Исходный текст: ')
             print(vizh_open_decode(phrase, alphabet, key))
     else:
         if cipher_mode == 0:
+            print('Шифртекст: ')
             print(vizh_cipher_encode(phrase, alphabet, key))
         else:
+            print('Исходный текст: ')
             print(vizh_cipher_decode(phrase, alphabet, key))
 
 
